@@ -1,16 +1,19 @@
-import moment from "moment";
-import './App.css';
+import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+import "./App.css";
 
 const FIRST_WEEK = 15;
 
 function App() {
+  dayjs.extend(weekOfYear)
+
   const frontendQueue = ["Dima", "Leo", "Andrii"];
   const frontendIndexes = Object.keys(frontendQueue);
 
   const backendQueue = ["Marco", "Leoni", "Sukh", "Daniel"];
   const backendIndexes = Object.keys(backendQueue);
 
-  const thisWeek = moment().week();
+  const thisWeek = dayjs().week();
 
   let frontendCurrentWeek = thisWeek;
   let backendCurrentWeek = thisWeek;
