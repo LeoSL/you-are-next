@@ -10,7 +10,7 @@ const FIRST_WEEK = 15;
 function App() {
   dayjs.extend(weekOfYear)
 
-  const frontendQueue = ["Dima", "Leo", "Andrii"];
+  const frontendQueue = ["Dima", "Leo", "Andrii", "Julio"];
   const frontendIndexes = Object.keys(frontendQueue);
 
   const backendQueue = ["Marco", "Leoni", "Sukh", "Daniel"];
@@ -21,6 +21,9 @@ function App() {
 
   let frontendCurrentWeek = thisWeek;
   let backendCurrentWeek = thisWeek;
+
+  console.log(frontendIndexes);
+  console.log(backendIndexes);
 
   while (!frontendIndexes.includes(String(frontendCurrentWeek - FIRST_WEEK))) {
     frontendCurrentWeek = frontendCurrentWeek - 6;
@@ -36,7 +39,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>Week {thisWeek}th 🗓️ {thisDay}</h1>
+        <h1>Week {thisWeek} 🗓️ {thisDay}</h1>
       </header>
 
       <main className="main-wrapper">
