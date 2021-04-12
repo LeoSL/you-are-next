@@ -1,6 +1,9 @@
+import "./App.css";
+
 import dayjs from "dayjs";
 import weekOfYear from "dayjs/plugin/weekOfYear";
-import "./App.css";
+
+import PersonCard from "./components/PersonCard";
 
 const FIRST_WEEK = 15;
 
@@ -14,7 +17,7 @@ function App() {
   const backendIndexes = Object.keys(backendQueue);
 
   const thisWeek = dayjs().week();
-  const thisDay = dayjs().format('DD.MM.YYYY');
+  const thisDay = dayjs().format("DD.MM.YYYY");
 
   let frontendCurrentWeek = thisWeek;
   let backendCurrentWeek = thisWeek;
@@ -40,24 +43,10 @@ function App() {
         <h2 className="main-wrapper__subtitle">This week representatives</h2>
         <div className="row">
           <div className="col">
-            <div className="card">
-              <div className="card__content">
-                <h2 className="card__label">Frontend 🖼️</h2>
-                <div className="card__title">
-                  {frontendPerson}
-                </div>
-              </div>
-            </div>
+            <PersonCard title="Frontend 🖼️" personName={frontendPerson} />
           </div>
           <div className="col">
-            <div className="card">
-              <div className="card__content">
-                <h2 className="card__label">Backend 📦</h2>
-                <div className="card__title">
-                  {backendPerson}
-                </div>
-              </div>
-            </div>
+            <PersonCard title="Backend 📦" personName={backendPerson} />
           </div>
         </div>
       </main>
