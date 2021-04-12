@@ -23,7 +23,6 @@ html {
 }
 
 .main-wrapper {
-  min-height: calc(100vh - 165px);
   padding: 1rem 0;
 }
 
@@ -70,15 +69,4 @@ html {
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
-}
-
-.footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: .65em;
-  color: rgba(255, 255, 255, .8);
-}
-
-.footer a {
-  color: inherit;
 }
