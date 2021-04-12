@@ -18,20 +18,17 @@ function App() {
 
   const thisWeek = dayjs().week();
   const thisDay = dayjs().format("DD.MM.YYYY");
+  let calculatedWorkWeek = thisWeek;
 
-  let frontendCurrentWeek = thisWeek;
-  let backendCurrentWeek = thisWeek;
-
-  while (!frontendIndexes.includes(String(frontendCurrentWeek - FIRST_WEEK))) {
-    frontendCurrentWeek = frontendCurrentWeek - 6;
+  if (
+    !frontendIndexes.includes(String(calculatedWorkWeek - FIRST_WEEK))
+    && !backendIndexes.includes(String(calculatedWorkWeek - FIRST_WEEK))
+  ) {
+    calculatedWorkWeek = calculatedWorkWeek - 4;
   }
 
-  while (!backendIndexes.includes(String(backendCurrentWeek - FIRST_WEEK))) {
-    backendCurrentWeek = backendCurrentWeek - 6;
-  }
-
-  const frontendPerson = frontendQueue[frontendCurrentWeek - FIRST_WEEK];
-  const backendPerson = backendQueue[backendCurrentWeek - FIRST_WEEK];
+  const frontendPerson = frontendQueue[calculatedWorkWeek - FIRST_WEEK];
+  const backendPerson = backendQueue[calculatedWorkWeek - FIRST_WEEK];
 
   return (
     <>
