@@ -22,9 +22,6 @@ function App() {
   let frontendCurrentWeek = thisWeek;
   let backendCurrentWeek = thisWeek;
 
-  console.log(frontendIndexes);
-  console.log(backendIndexes);
-
   while (!frontendIndexes.includes(String(frontendCurrentWeek - FIRST_WEEK))) {
     frontendCurrentWeek = frontendCurrentWeek - 6;
   }
