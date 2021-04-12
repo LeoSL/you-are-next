@@ -14,6 +14,7 @@ function App() {
   const backendIndexes = Object.keys(backendQueue);
 
   const thisWeek = dayjs().week();
+  const thisDay = dayjs().format('DD.MM.YYYY');
 
   let frontendCurrentWeek = thisWeek;
   let backendCurrentWeek = thisWeek;
@@ -30,21 +31,41 @@ function App() {
   const backendPerson = backendQueue[backendCurrentWeek - FIRST_WEEK];
 
   return (
-    <div className="App">
-      <h1>Week: ({thisWeek}th)</h1>
-      <hr className="Divider"></hr>
-      <h2>Frontend</h2>
-      <div className="Background">
-      <p>This week's person is:</p>
-        {frontendPerson}
-      </div>
-      <h2>Backend</h2>
-      <div className="Background">
-      <p>This week's person is:</p>
-        {backendPerson}
-      </div>
-      <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    </div>
+    <>
+      <header className="header">
+        <h1>Week {thisWeek}th 🗓️ {thisDay}</h1>
+      </header>
+
+      <main className="main-wrapper">
+        <h2 className="main-wrapper__subtitle">This week representatives</h2>
+        <div className="row">
+          <div className="col">
+            <div className="card">
+              <div className="card__content">
+                <h2 className="card__label">Frontend 🖼️</h2>
+                <div className="card__title">
+                  {frontendPerson}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="card">
+              <div className="card__content">
+                <h2 className="card__label">Backend 📦</h2>
+                <div className="card__title">
+                  {backendPerson}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <footer className="footer">
+        Logo made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      </footer>
+    </>
   );
 }
 
