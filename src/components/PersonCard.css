@@ -1,0 +1,66 @@
+.card {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-bottom: 100%;
+  border: 3px solid snow;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.card__label {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.card__title {
+  margin: auto 0;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.card__title span {
+  position: relative;
+}
+
+.card__title span::before,
+.card__title span::after {
+  position: absolute;
+  content: '✨';
+  font-size: 1rem;
+  animation: spark 2s infinite ease-in-out forwards;
+}
+
+.card__title span::before {
+  bottom: -10px;
+  left: -10px;
+}
+
+.card__title span::after {
+  top: -12px;
+  right: -12px;
+  animation-delay: .4s;
+}
+
+@keyframes spark {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
