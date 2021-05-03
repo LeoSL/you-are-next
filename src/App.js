@@ -5,37 +5,44 @@ import weekOfYear from "dayjs/plugin/weekOfYear";
 
 import PersonCard from "./components/PersonCard";
 
-const FIRST_WEEK = 15;
-
-function App() {
-  dayjs.extend(weekOfYear)
-
-  const frontendQueue = ["Dima", "Leo", "Andrii", "Julio"];
-  const frontendIndexes = Object.keys(frontendQueue);
-
-  const backendQueue = ["Marco", "Leoni", "Sukh", "Daniel"];
-  const backendIndexes = Object.keys(backendQueue);
-
+const useCurrentData = () => {
+  dayjs.extend(weekOfYear);
+ 
+  const FIRST_WEEK = 15;
   const thisWeek = dayjs().week();
   const thisDay = dayjs().format("DD.MM.YYYY");
-  let calculatedWorkWeek = thisWeek;
 
-  if (
-    !frontendIndexes.includes(String(calculatedWorkWeek - FIRST_WEEK))
-    && !backendIndexes.includes(String(calculatedWorkWeek - FIRST_WEEK))
-  ) {
-    calculatedWorkWeek = calculatedWorkWeek - 4;
-  }
+  const frontendQueue = ["Dima", "Leo", "Andrii", "Julio"];
+  const backendQueue = ["Marco", "Leoni", "Sukh", "Daniel"];
 
-  const frontendPerson = frontendQueue[calculatedWorkWeek - FIRST_WEEK];
-  const backendPerson = backendQueue[calculatedWorkWeek - FIRST_WEEK];
+  const getCurrentWeek = () => {
+    // when new year starts
+    if ((thisWeek - FIRST_WEEK) < 1) {
+      return thisWeek;
+    }
+
+    return thisWeek - FIRST_WEEK;
+  };
+ 
+  const frontendPerson = frontendQueue[getCurrentWeek() % frontendQueue.length];
+  const backendPerson = backendQueue[getCurrentWeek() % backendQueue.length];
+
+  return {
+    thisDay,
+    thisWeek,
+    frontendPerson,
+    backendPerson,
+  };
+};
+
+const App = () => {
+  const { thisDay, thisWeek, frontendPerson, backendPerson } = useCurrentData();
 
   return (
     <>
       <header className="header">
         <h1>Week {thisWeek} 🗓️ {thisDay}</h1>
       </header>
-
       <main className="main-wrapper">
         <h2 className="main-wrapper__subtitle">This week representatives</h2>
         <div className="row">
